@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Books</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="scan()">
+        <ion-icon name="barcode"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-segment [(ngModel)]="selectedView">
+    <ion-segment-button value="books">
+      <ion-label>Book</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="selectedView">
+    <div *ngSwitchCase="'books'">
+      <form [formGroup]="book" (ngSubmit)="addBook()">
+        <ion-button expand="block" type="submit" [disabled]="!book.valid">Save Book Infos</ion-button>
+        <ion-item>
+          <ion-label position="stacked">Barcode EAN</ion-label>
+          <ion-input type="number" formControlName="ean" placeholder="Book's EAN"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input formControlName="title" placeholder="Book's title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Volume number</ion-label>
+          <ion-input type="number" formControlName="volumeNumber" placeholder="Book's volume number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Desinator</ion-label>
+          <ion-input formControlName="desinator" placeholder="Book's desinator"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Scriptwriter</ion-label>
+          <ion-input formControlName="scriptwriter" placeholder="Book's scriptwriter"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Publisher</ion-label>
+          <ion-input formControlName="publisher" placeholder="Book's publisher"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Type</ion-label>
+          <ion-input formControlName="type" placeholder="Book's type"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Genre</ion-label>
+          <ion-input formControlName="genre" placeholder="Book's genre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Publish date</ion-label>
+          <ion-datetime formControlName="publishDate" placeholder="Book's publish date"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Page number</ion-label>
+          <ion-input type="number" formControlName="pageNumber" placeholder="Book's page number"></ion-input>
+        </ion-item>
+      </form>
+
+      <ion-list>
+        <ion-item button *ngFor="let book of books" [routerLink]="['/', 'books', book.id]">
+          <ion-label>
+            <h2>{{ book.title }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

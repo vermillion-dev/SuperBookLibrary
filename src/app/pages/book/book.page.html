@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="books"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Book</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="deleteBook()">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content padding>
+    <div *ngIf="book">
+      <ion-item>
+        <ion-label position="stacked">Barcode EAN</ion-label>
+        <ion-input type="number" [(ngModel)]="book.ean" placeholder="Book's EAN"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input [(ngModel)]="book.title" placeholder="Book's title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Volume number</ion-label>
+        <ion-input type="number" [(ngModel)]="book.volumeNumber" placeholder="Book's volume number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Desinator</ion-label>
+        <ion-input [(ngModel)]="book.desinator" placeholder="Book's desinator"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Scriptwriter</ion-label>
+        <ion-input [(ngModel)]="book.scriptwriter" placeholder="Book's scriptwriter"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Publisher</ion-label>
+        <ion-input [(ngModel)]="book.publisher" placeholder="Book's publisher"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Type</ion-label>
+        <ion-input [(ngModel)]="book.type" placeholder="Book's type"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Genre</ion-label>
+        <ion-input [(ngModel)]="book.genre" placeholder="Book's genre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Publish date</ion-label>
+        <ion-datetime [(ngModel)]="book.publishDate" placeholder="Book's publish date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Page number</ion-label>
+        <ion-input type="number" [(ngModel)]="book.pageNumber" placeholder="Book's page number"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="updateBook()">Update Book's Info</ion-button>
+    </div>
+  </ion-content>
